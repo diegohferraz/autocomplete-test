@@ -39,12 +39,19 @@ const Autocomplete = ({
           className="absolute z-10 w-full bg-transparent px-12 text-5xl text-slate-800 caret-slate-700 outline-none placeholder:text-slate-400 placeholder:text-opacity-15"
         />
         {searchTerm.length > 0 && !isSearching && (
-          <button onClick={onClear} className="group relative z-20">
+          <button
+            onClick={onClear}
+            className="group relative z-20"
+            title="Clear search"
+          >
             <FiX className="size-10 stroke-slate-600 transition-colors group-hover:stroke-slate-900" />
           </button>
         )}
         {isSearching && (
-          <FiLoader className="size-10 animate-spin stroke-slate-300" />
+          <FiLoader
+            role="progressbar"
+            className="size-10 animate-spin stroke-slate-300"
+          />
         )}
       </div>
       {searchTerm.length == 1 && (
