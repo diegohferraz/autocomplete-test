@@ -9,6 +9,7 @@
     "url": "https://github.com/diegohferraz"
   },
   "scripts": {
+    "run:server": "json-server ./mock/db.json",
     "dev": "vite",
     "build": "tsc && vite build",
     "serve": "vite preview",
@@ -39,6 +40,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-tailwindcss": "^3.14.1",
     "happy-dom": "^12.10.3",
+    "json-server": "0.17.4",
     "postcss": "^8.4.33",
     "prettier": "3.1.1",
     "tailwindcss": "^3.4.1",
