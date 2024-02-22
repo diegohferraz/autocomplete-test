@@ -10,6 +10,7 @@ type AutocompleteProps = {
   suggestions: PokemonSearchResult[] | null
   isSearching: boolean
   onChange: (newTerm: string) => void
+  onSelectOption: (selectedOption: string) => void
   onClear: () => void
 }
 
@@ -18,6 +19,7 @@ const Autocomplete = ({
   suggestions,
   isSearching,
   onChange,
+  onSelectOption,
   onClear
 }: AutocompleteProps) => {
   const iptRef = useRef<HTMLInputElement>(null)
@@ -65,7 +67,11 @@ const Autocomplete = ({
         </span>
       )}
       {suggestions && searchTerm.length >= 2 && (
-        <Suggestions searchTerm={searchTerm} suggestions={suggestions} />
+        <Suggestions
+          searchTerm={searchTerm}
+          suggestions={suggestions}
+          onSelectOption={onSelectOption}
+        />
       )}
     </div>
   )

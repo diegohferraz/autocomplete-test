@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import Autocomplete from './Autocomplete'
 
@@ -14,6 +14,8 @@ function App() {
   )
   const debouncedSearchTerm = useDebounce(searchTerm, 300)
 
+  const isOptionSelection = useRef(false)
+
   useEffect(() => {
     const getPokemons = async () => {
       setIsSearching(true)
@@ -27,6 +29,10 @@ function App() {
       }
     }
 
+    if (isOptionSelection.current) {
+      isOptionSelection.current = false
+      return
+    }
     if (!debouncedSearchTerm || debouncedSearchTerm.length < 2) {
       setSuggestions(null)
       return
@@ -35,8 +41,26 @@ function App() {
     getPokemons()
   }, [debouncedSearchTerm])
 
+  const handleSearchChange = (newTerm: string) => {
+    //TODO: Improve to maybe use regex, time is short for the home task.
+    if (
+      newTerm[newTerm.length - 1] === ' ' &&
+      newTerm[newTerm.length - 2] === ' '
+    ) {
+      return
+    } else {
+      setSearchTerm(newTerm)
+    }
+  }
+
   const handleClearInput = () => {
     setSearchTerm('')
+    setSuggestions(null)
+  }
+
+  const handleSelectOption = (option: string) => {
+    isOptionSelection.current = true
+    setSearchTerm(option)
     setSuggestions(null)
   }
 
@@ -55,8 +79,9 @@ function App() {
           searchTerm={searchTerm}
           suggestions={suggestions}
           isSearching={isSearching}
-          onChange={(newTerm) => setSearchTerm(newTerm)}
+          onChange={handleSearchChange}
           onClear={handleClearInput}
+          onSelectOption={handleSelectOption}
         />
       </div>
     </main>

@@ -6,7 +6,7 @@ type HighlightedNameProps = {
 const HighlightedName = ({ text, searchTerm }: HighlightedNameProps) => {
   if (!searchTerm) return text
 
-  const regex = new RegExp(`(${searchTerm})`, 'gi')
+  const regex = new RegExp(`(${searchTerm.trim()})`, 'gi')
   const splitedText = text.split(regex)
 
   return splitedText.map((part, idx) =>
