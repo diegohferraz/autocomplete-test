@@ -1,9 +1,11 @@
 import { PokemonSearchResult } from './types'
 
+const API_URL = import.meta.env.VITE_API_BASE_URL
+
 export const searchPokemon = async (
   searchTerm: string
 ): Promise<PokemonSearchResult[]> => {
-  const response = await fetch(`http://localhost:3000/pokemons?q=${searchTerm}`)
+  const response = await fetch(`${API_URL}/pokemons?q=${searchTerm}`)
   const pokemons = await response.json()
 
   return pokemons
