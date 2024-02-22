@@ -3,6 +3,7 @@
   "description": "This is a test repository to create a autocomplete component to deel interview",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "author": {
     "name": "Diego Hernandes Ferraz",
     "email": "diegohferraz@hotmail.com",
