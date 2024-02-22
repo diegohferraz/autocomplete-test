@@ -7,7 +7,7 @@ type SuggestionItemProps = {
 
 const SuggestionItem = ({ text, searchTerm }: SuggestionItemProps) => (
   <li>
-    <button className="w-full px-10 py-4 text-left text-slate-500 hover:bg-slate-200">
+    <button className="w-full px-10 py-4 text-left capitalize text-slate-500 hover:bg-slate-200">
       <HighlightedName text={text} searchTerm={searchTerm} />
     </button>
   </li>
